@@ -45,9 +45,48 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 3")
+    while True:
+    	resposta = ""
+    	comando = input()
 
+    	if comando == '':
+    		break
 
+    	index = comando.find(" ")
+    	texto = comando[index+1:]
+    	rot = comando[3:index]
+    	test = comando[0:3]
+
+    	if test != 'ROT':
+    		print('Erro')
+    		continue
+    	if rot.isnumeric():
+    		rot = int(rot)
+    	else:
+    		print('Erro')
+    		continue
+
+    	size = len(texto)
+    	i = 0
+    	while i < size:
+    		temp = texto[i]
+    		if temp.islower():
+    			posicao = ord(temp) - 97
+    			posicao = (posicao + rot) % 26
+    			posicao = posicao + 97
+    			resposta += chr(posicao)	
+    		elif temp.isupper():
+    			posicao = ord(temp) - 65
+    			posicao = (posicao + rot) % 26
+    			posicao = posicao + 65
+    			resposta += chr(posicao)
+    		else:
+    			resposta += texto[i]
+    		i+=1
+
+    	print(resposta)
+
+    				
     
 if __name__ == '__main__':
     main()

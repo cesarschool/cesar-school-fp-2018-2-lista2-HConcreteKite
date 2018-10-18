@@ -19,9 +19,39 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 4")
+    data = input()
+    lista_mes = "312831303130313130313031"
+    resposta = ""
+
+    bissexto = 0
+    temdiaextra = True
+
+    index = data.find("-")
+    ano = int(data[0:index])
+    mes = int(data[index+1:index+3])
+    dia = int(data[index+4:])
+    dia+=1
+
+    if ((ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0)):
+    	bissexto = 1
+    dia_mes = int(lista_mes[((mes-1)*2):((mes-1)*2)+2])
+
+    if mes == 2:
+    	dia_mes += bissexto
+
+    if dia > dia_mes:
+    	dia = 1
+    	mes+=1
+    	if(mes > 12):
+    		mes = 1
+    		ano+=1
+
+    ano = str(ano)
+    mes = str(mes)
+    dia = str(dia)
 
 
-    
+    print("{}-{}-{}".format(ano,mes,dia))
+
 if __name__ == '__main__':
     main()

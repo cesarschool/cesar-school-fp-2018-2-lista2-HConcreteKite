@@ -28,9 +28,62 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 1")
     
+    senhas = input("Digite as senhas:")
+    senha = ""
+    resposta = ""
+    size_senhas = len(senhas)
+    i = 0
+    index = 0
+    count = 0
+    while i < size_senhas:
+    
+        if senhas[i] == ',' or i+1 == size_senhas:
+            senha = senhas[index:i]
+            size_senha = len(senha)
+            if size_senha < 6 or size_senha > 18:
+                index += 2
+                i+=1
+                continue
+            j=0
+            temp = 0
+
+            while j < size_senha:
+                test = ""
+                test = senha[j]
+                if ord(test) in range(ord("a"),ord("z")+1):
+                    temp+=1
+                elif ord(test) in range(ord("@"),ord("Z")+1):
+                    temp+=1
+                elif ord(test) in range(ord("0"),ord("9")+1):
+                    temp+=1
+                elif ord(test) in range(ord("#"),ord("$")+1):
+                    temp+=1
+                j+=1
+
+            if temp == size_senha:
+                if count == 0:
+                    resposta += senha
+                else:
+                    resposta += ', '
+                    resposta += senha
+                count+=1
+            else:
+                index+=2
+                i+=1
+                continue
+        
+        senha = ""
+        i+=1
+    
+    print(resposta)
 
 
+
+        
 if __name__ == '__main__':
+
     main()
+
+
+    

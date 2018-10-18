@@ -38,7 +38,48 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 2")
+    x = 0.0
+    y = 0.0
+    distancia = 0.0
+    print("Digite as Entradas: \n")
+    while True:
+    	comando = input()
+    	if comando == "":
+    		break
+
+    	size = len(comando)
+    	index = comando.find(" ")
+
+    	if index == -1:
+    		print("Comando Inválido")
+    		continue
+    		
+    	direcao = comando[0:index]
+    	modulo = comando[index+1:]
+
+    	if direcao == "CIMA":
+    		x+= float(modulo)
+    	elif direcao == "BAIXO":
+    		x+= float(modulo) * -1
+    	elif direcao == "DIREITA":
+    		y+= float(modulo)
+    	elif direcao == "ESQUERDA":
+    		y+= float(modulo) * -1
+    	else:
+    		print("Comando Inválido")
+    		continue
+
+    	temp = pow(x,2) + pow(y,2)
+    	distancia = pow(temp,0.5)
+    	distancia = int(distancia)
+
+    print(distancia)
+
+
+
+
+
+
 
 
     
